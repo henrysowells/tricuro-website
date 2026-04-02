@@ -1,12 +1,33 @@
-import RotatingEarth from "@/components/ui/wireframe-dotted-globe";
+import { Nav }                  from "@/components/nav"
+import { Hero }                 from "@/components/sections/hero"
+import { StatBand }             from "@/components/sections/stat-band"
+import { About }                from "@/components/sections/about"
+import { PullQuote }            from "@/components/pull-quote"
+import { Services }             from "@/components/sections/services"
+import { GlobalPerspectives }   from "@/components/sections/global-perspectives"
+import { DigitalControl }       from "@/components/sections/digital-control"
+import { OurWork }              from "@/components/sections/our-work"
+import { Team }                 from "@/components/sections/team"
+import { Contact }              from "@/components/sections/contact"
+import { Footer }               from "@/components/footer"
 
-export default function DemoOne() {
+export default function Page() {
   return (
-    <main className="min-h-screen bg-black flex flex-col items-center justify-center p-8 gap-6">
-      <h1 className="text-white font-semibold tracking-widest uppercase text-sm opacity-50">
-        Wireframe Dotted Globe
-      </h1>
-      <RotatingEarth />
-    </main>
-  );
+    <>
+      <Nav />
+      <main>
+        <Hero />
+        <StatBand />
+        <About />
+        <PullQuote />
+        <Services />
+        <GlobalPerspectives />
+        <DigitalControl />
+        <OurWork />
+        <Team />
+        <Contact />
+      </main>
+      <Footer />
+    </>
+  )
 }
