@@ -9,6 +9,7 @@ import { DigitalControl }       from "@/components/sections/digital-control"
 import { OurWork }              from "@/components/sections/our-work"
 import { Team }                 from "@/components/sections/team"
 import { Contact }              from "@/components/sections/contact"
+import { DCTicker }             from "@/components/dc-ticker"
 import { Footer }               from "@/components/footer"
 
 export default function Page() {
@@ -26,6 +27,7 @@ export default function Page() {
         <OurWork />
         <Team />
         <Contact />
+        <DCTicker />
       </main>
       <Footer />
     </>

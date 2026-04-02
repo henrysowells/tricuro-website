@@ -34,21 +34,28 @@ export function Contact() {
             {[
               { label: "Email",    value: "info@tricuro.com",  href: "mailto:info@tricuro.com" },
               { label: "Phone",    value: "+1-202-701-9005",   href: "tel:+12027019005" },
-              { label: "Location", value: "Washington, D.C.",  href: null },
             ].map(({ label, value, href }) => (
               <div key={label} className="grid grid-cols-[110px_1fr] items-center py-4">
                 <span className="text-[9.5px] font-bold tracking-[0.28em] uppercase text-gold">
                   {label}
                 </span>
-                {href ? (
-                  <a href={href} className="text-[16px] text-white/78 hover:text-gold-light transition-colors duration-200">
-                    {value}
-                  </a>
-                ) : (
-                  <span className="text-[16px] text-white/78">{value}</span>
-                )}
+                <a href={href} className="text-[16px] text-white/78 hover:text-gold-light transition-colors duration-200">
+                  {value}
+                </a>
               </div>
             ))}
+            {/* Location block */}
+            <div className="grid grid-cols-[110px_1fr] items-start py-4">
+              <span className="text-[9.5px] font-bold tracking-[0.28em] uppercase text-gold pt-0.5">
+                Location
+              </span>
+              <div>
+                <p className="text-[16px] text-white/78 leading-snug">Washington, D.C.</p>
+                <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-white/32 mt-1">
+                  K Street &nbsp;&bull;&nbsp; Capitol Hill &nbsp;&bull;&nbsp; 38°54′N 77°01′W
+                </p>
+              </div>
+            </div>
           </div>
         </Reveal>
 

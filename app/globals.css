@@ -143,6 +143,19 @@
   }
 }
 
+/* ── DC landmark ticker ── */
+@keyframes dc-marquee {
+  from { transform: translateX(0) }
+  to   { transform: translateX(-50%) }
+}
+.dc-marquee-track {
+  animation: dc-marquee 40s linear infinite;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .dc-marquee-track { animation: none; }
+}
+
 /* ── Scroll reveal ── */
 @media (prefers-reduced-motion: no-preference) {
   .reveal-up {
