@@ -124,14 +124,11 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
       const currentScale = projection.scale()
       const scaleFactor = currentScale / radius
 
-      // Ocean background
+      // Ocean background — match hero navy so the globe blends in
       context.beginPath()
       context.arc(containerWidth / 2, containerHeight / 2, currentScale, 0, 2 * Math.PI)
-      context.fillStyle = "#000000"
+      context.fillStyle = "#0d2340"
       context.fill()
-      context.strokeStyle = "#ffffff"
-      context.lineWidth = 2 * scaleFactor
-      context.stroke()
 
       if (landFeatures) {
         // Graticule
@@ -273,16 +270,16 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
   return (
     <div className={`relative ${className}`}>
       {isLoading && (
-        <div className="absolute inset-0 flex items-center justify-center dark bg-background rounded-2xl">
+        <div className="absolute inset-0 flex items-center justify-center">
           <p className="text-muted-foreground text-sm tracking-widest uppercase">Loading&hellip;</p>
         </div>
       )}
       <canvas
         ref={canvasRef}
-        className="w-full h-auto rounded-2xl bg-background dark"
-        style={{ maxWidth: "100%", height: "auto" }}
+        className="w-full h-auto"
+        style={{ maxWidth: "100%", height: "auto", background: "transparent" }}
       />
-      <div className="absolute bottom-4 left-4 text-xs text-muted-foreground px-2 py-1 rounded-md dark bg-neutral-900">
+      <div className="absolute bottom-4 left-4 text-xs text-white/30 px-2 py-1">
         Drag to rotate &bull; Scroll to zoom
       </div>
     </div>
