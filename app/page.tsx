@@ -7,6 +7,8 @@ import { Services }             from "@/components/sections/services"
 import { GlobalPerspectives }   from "@/components/sections/global-perspectives"
 import { DigitalControl }       from "@/components/sections/digital-control"
 import { OurWork }              from "@/components/sections/our-work"
+import { Clients }              from "@/components/sections/clients"
+import { MediaPlacements }      from "@/components/sections/media-placements"
 import { Team }                 from "@/components/sections/team"
 import { Contact }              from "@/components/sections/contact"
 import { DCTicker }             from "@/components/dc-ticker"
@@ -25,6 +27,8 @@ export default function Page() {
         <GlobalPerspectives />
         <DigitalControl />
         <OurWork />
+        <Clients />
+        <MediaPlacements />
         <Team />
         <Contact />
         <DCTicker />

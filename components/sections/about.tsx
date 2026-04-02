@@ -31,21 +31,15 @@ export function About() {
         {/* Right */}
         <Reveal delay={2}>
           <p className="text-[19.5px] font-light text-navy leading-[1.75] mb-6">
-            In the fast-paced, always-on world of the 21st century digital age, healthy global
-            reputations require more than influence; they need control.
-          </p>
-          <p className="text-[17px] text-[#383838] leading-[1.9] mb-5">
-            Tricuro is a Washington, D.C.-based strategic communications firm with deep roots
-            in the corridors of K Street and Capitol Hill. We specialize in public diplomacy,
-            public affairs, and international reputation management — serving governments,
-            corporations, and institutions seeking to shape and protect their narratives in an
-            increasingly complex media environment.
+            Helping governments and multinational corporations enhance and protect their global
+            reputations.
           </p>
           <p className="text-[17px] text-[#383838] leading-[1.9]">
-            Our team brings decades of experience at the intersection of policy, media, and
-            international affairs. From the halls of Congress to global media markets, we give
-            our clients the strategic command they need to communicate with confidence on the
-            world stage.
+            Tricuro Communications is a strategic communications agency that helps governments
+            and multinational corporations enhance and protect their global reputations. Our
+            expertise spans international media relations, strategic messaging, speechwriting,
+            script development, crisis communications, and public affairs — ensuring our clients
+            stand out in an increasingly competitive global marketplace.
           </p>
         </Reveal>
       </div>

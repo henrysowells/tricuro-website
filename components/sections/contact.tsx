@@ -31,30 +31,36 @@ export function Contact() {
           </p>
 
           <div className="divide-y divide-white/[0.08]">
-            {[
-              { label: "Email",    value: "info@tricuro.com",  href: "mailto:info@tricuro.com" },
-              { label: "Phone",    value: "+1-202-701-9005",   href: "tel:+12027019005" },
-            ].map(({ label, value, href }) => (
-              <div key={label} className="grid grid-cols-[110px_1fr] items-center py-4">
-                <span className="text-[9.5px] font-bold tracking-[0.28em] uppercase text-gold">
-                  {label}
-                </span>
-                <a href={href} className="text-[16px] text-white/78 hover:text-gold-light transition-colors duration-200">
-                  {value}
-                </a>
-              </div>
-            ))}
-            {/* Location block */}
+            {/* Offices */}
             <div className="grid grid-cols-[110px_1fr] items-start py-4">
               <span className="text-[9.5px] font-bold tracking-[0.28em] uppercase text-gold pt-0.5">
-                Location
+                Offices
               </span>
               <div>
-                <p className="text-[16px] text-white/78 leading-snug">Washington, D.C.</p>
+                <p className="text-[16px] text-white/78 leading-snug">Washington DC</p>
                 <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-white/32 mt-1">
-                  K Street &nbsp;&bull;&nbsp; Capitol Hill &nbsp;&bull;&nbsp; 38°54′N 77°01′W
+                  London &nbsp;&bull;&nbsp; New York
                 </p>
               </div>
+            </div>
+            {/* Email */}
+            <div className="grid grid-cols-[110px_1fr] items-center py-4">
+              <span className="text-[9.5px] font-bold tracking-[0.28em] uppercase text-gold">Email</span>
+              <a href="mailto:david.sowells@tricuro.com" className="text-[16px] text-white/78 hover:text-gold-light transition-colors duration-200">
+                david.sowells@tricuro.com
+              </a>
+            </div>
+            {/* Phone */}
+            <div className="grid grid-cols-[110px_1fr] items-center py-4">
+              <span className="text-[9.5px] font-bold tracking-[0.28em] uppercase text-gold">Phone</span>
+              <a href="tel:+12027019005" className="text-[16px] text-white/78 hover:text-gold-light transition-colors duration-200">
+                +1-202-701-9005
+              </a>
+            </div>
+            {/* Website */}
+            <div className="grid grid-cols-[110px_1fr] items-center py-4">
+              <span className="text-[9.5px] font-bold tracking-[0.28em] uppercase text-gold">Web</span>
+              <span className="text-[16px] text-white/78">www.tricuro.com</span>
             </div>
           </div>
         </Reveal>
