@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tricuro — Strategic Communications & Reputation Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:       #0d2340;
+      --navy-mid:   #163459;
+      --navy-deep:  #091a2e;
+      --gold:       #b8902a;
+      --gold-light: #d4ac48;
+      --gold-pale:  #f0e6c8;
+      --gold-rule:  rgba(184,144,42,0.28);
+      --white:      #ffffff;
+      --off-white:  #f8f6f1;
+      --warm-grey:  #f2efe9;
+      --text:       #111111;
+      --text-mid:   #383838;
+      --text-soft:  #595959;
+      --border:     rgba(13,35,64,0.10);
+      --border-gold:rgba(184,144,42,0.22);
+      --z-nav:      100;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--text);
+      font-family: 'Source Sans 3', Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ── REDUCED MOTION ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* ── REVEAL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.8s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-24px);
+      transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.8s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    .delay-1 { transition-delay: 0.10s; }
+    .delay-2 { transition-delay: 0.20s; }
+    .delay-3 { transition-delay: 0.30s; }
+    .delay-4 { transition-delay: 0.40s; }
+    .delay-5 { transition-delay: 0.50s; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: var(--z-nav);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.15rem 4rem;
+      background: rgba(9,26,46,0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-gold);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(9,26,46,0.99);
+      box-shadow: 0 4px 32px rgba(9,26,46,0.28);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 21px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .nav-logo-dot {
+      color: var(--gold-light);
+      font-size: 26px;
+      line-height: 1;
+      margin-left: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.4rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.62);
+      text-decoration: none;
+      transition: color 0.25s;
+      position: relative;
+      padding-bottom: 3px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: var(--gold-light);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      text-decoration: none;
+      border: 1px solid rgba(184,144,42,0.4);
+      padding: 0.55rem 1.4rem;
+      transition: all 0.25s;
+      cursor: pointer;
+    }
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--white);
+      border-color: var(--gold);
+    }
+
+    /* Mobile nav */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--gold-light);
+      transition: all 0.28s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 60px; left: 0; right: 0;
+      background: var(--navy-deep);
+      border-bottom: 1px solid var(--border-gold);
+      z-index: 99;
+      padding: 1.5rem 2rem 2rem;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: color 0.25s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--gold-light); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 11rem 4rem 8rem;
+    }
+
+    /* Subtle diagonal stripe texture */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          -48deg,
+          transparent,
+          transparent 72px,
+          rgba(255,255,255,0.018) 72px,
+          rgba(255,255,255,0.018) 73px
+        );
+      z-index: 0;
+    }
+
+    /* Radial glow upper-right */
+    .hero-glow {
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 70vw;
+      height: 70vw;
+      background: radial-gradient(ellipse at center,
+        rgba(30,66,112,0.55) 0%,
+        rgba(13,35,64,0) 70%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Animated gold vertical rule */
+    .hero-rule {
+      position: absolute;
+      left: 4rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.5px;
+      height: 0;
+      background: linear-gradient(to bottom, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+      z-index: 2;
+      animation: ruleGrow 1.1s 0.4s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+    @keyframes ruleGrow {
+      from { height: 0; }
+      to   { height: 200px; }
+    }
+
+    /* Horizontal gold accent bottom */
+    .hero-bar {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--gold) 0%, transparent 60%);
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 960px;
+      padding-left: 3.5rem;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 2.2rem;
+      opacity: 0;
+      animation: heroUp 0.9s 0.5s cubic-bezier(0.22,1,0.36,1) forwards;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(3.4rem, 7.5vw, 7rem);
+      font-weight: 400;
+      line-height: 1.04;
+      letter-spacing: -0.015em;
+      color: var(--white);
+      opacity: 0;
+      animation: heroUp 0.9s 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 2.6rem 0;
+      opacity: 0;
+      animation: heroUp 0.9s 0.85s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+
+    .hero-intro {
+      font-size: 18px;
+      color: rgba(255,255,255,0.62);
+      font-weight: 300;
+      max-width: 560px;
+      line-height: 1.85;
+      opacity: 0;
+      animation: heroUp 0.9s 0.95s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+
+    .hero-actions {
+      margin-top: 3.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: heroUp 0.9s 1.1s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+
+    .hero-meta {
+      margin-top: 6rem;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.22);
+      opacity: 0;
+      animation: heroUp 0.9s 1.25s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+
+    @keyframes heroUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: var(--gold);
+      color: var(--white);
+      padding: 1rem 2.4rem;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateX(4px);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 1rem 2.4rem;
+      transition: all 0.25s;
+      cursor: pointer;
+    }
+    .btn-ghost:hover {
+      color: var(--white);
+      border-color: rgba(255,255,255,0.45);
+    }
+
+    /* ── STAT BAND ── */
+    .stat-band {
+      background: var(--navy-deep);
+      border-top: 1px solid var(--border-gold);
+      border-bottom: 1px solid var(--border-gold);
+      padding: 0;
+    }
+    .stat-band-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-item {
+      padding: 2.8rem 2rem;
+      text-align: center;
+      border-right: 1px solid var(--border-gold);
+      position: relative;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      color: var(--gold-light);
+      line-height: 1;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .stat-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+    }
+
+    /* ── SECTION SHARED ── */
+    .section-label {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .section-label-light { color: var(--gold-light); }
+    .section-label-light::before { background: var(--gold-light); }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--off-white);
+      padding: 8rem 4rem;
+      border-top: 4px solid var(--navy);
+    }
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 7rem;
+      align-items: start;
+    }
+    .about-left h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 3.4vw, 2.9rem);
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--navy);
+      margin-top: 1rem;
+    }
+    .about-left h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .about-left-rule {
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      margin-top: 2.5rem;
+    }
+
+    .about-right p {
+      color: var(--text-mid);
+      font-size: 17px;
+      line-height: 1.9;
+      margin-bottom: 1.6rem;
+    }
+    .about-right p:first-of-type {
+      font-size: 19.5px;
+      font-weight: 300;
+      color: var(--navy);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote-band {
+      background: var(--navy);
+      padding: 5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .pull-quote-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        -48deg, transparent, transparent 72px,
+        rgba(255,255,255,0.015) 72px, rgba(255,255,255,0.015) 73px
+      );
+    }
+    .pull-quote-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .pull-quote-mark {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 5rem;
+      color: var(--gold);
+      line-height: 0.5;
+      display: block;
+      margin-bottom: 1.5rem;
+      opacity: 0.6;
+    }
+    .pull-quote-text {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.55;
+      margin-bottom: 2rem;
+    }
+    .pull-quote-attr {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .pull-quote-attr::before,
+    .pull-quote-attr::after {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--navy);
+      padding: 8rem 4rem;
+    }
+    .services-inner { max-width: 1100px; margin: 0 auto; }
+    .services-header {
+      margin-bottom: 4.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .services-header h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 3.2vw, 2.7rem);
+      font-weight: 400;
+      color: var(--white);
+      margin-top: 0.75rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5px;
+      background: rgba(255,255,255,0.06);
+    }
+    .service-card {
+      background: var(--navy);
+      padding: 3.5rem;
+      position: relative;
+      transition: background 0.3s;
+      overflow: hidden;
+      cursor: default;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.4s cubic-bezier(0.22,1,0.36,1);
+    }
+    .service-card:hover { background: rgba(255,255,255,0.025); }
+    .service-card:hover::after { width: 100%; }
+
+    .service-num {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      margin-bottom: 2.2rem;
+      display: block;
+    }
+    .service-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.01em;
+    }
+    .service-card p {
+      font-size: 15.5px;
+      color: rgba(255,255,255,0.52);
+      line-height: 1.85;
+    }
+
+    /* ── GLOBAL PERSPECTIVES ── */
+    #global {
+      background: var(--white);
+      padding: 8rem 4rem;
+      border-top: 1px solid var(--border);
+    }
+    .global-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 7rem;
+      align-items: start;
+    }
+    .global-left h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 3.2vw, 2.7rem);
+      font-weight: 400;
+      color: var(--navy);
+      margin-top: 0.75rem;
+      line-height: 1.28;
+    }
+    .global-left-rule {
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      margin-top: 2.5rem;
+    }
+    .global-right p {
+      font-size: 17px;
+      color: var(--text-mid);
+      line-height: 1.9;
+      margin-bottom: 1.6rem;
+    }
+    .global-right p:first-child {
+      font-size: 19.5px;
+      color: var(--navy);
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    /* ── DIGITAL CONTROL ── */
+    #digital {
+      background: var(--warm-grey);
+      padding: 8rem 4rem;
+    }
+    .digital-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 7rem;
+      align-items: start;
+    }
+    .digital-left p {
+      font-size: 17px;
+      color: var(--text-mid);
+      line-height: 1.9;
+      margin-bottom: 1.6rem;
+    }
+    .digital-left p:first-child {
+      font-size: 19.5px;
+      color: var(--navy);
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .digital-right { padding-top: 0.5rem; }
+    .digital-right h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 3.2vw, 2.7rem);
+      font-weight: 400;
+      color: var(--navy);
+      margin-top: 0.75rem;
+      line-height: 1.28;
+    }
+    .digital-right-rule {
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      margin-top: 2.5rem;
+    }
+
+    /* ── OUR WORK ── */
+    #work {
+      background: var(--navy);
+      padding: 8rem 4rem;
+    }
+    .work-inner { max-width: 1100px; margin: 0 auto; }
+    .work-header { margin-bottom: 4rem; }
+    .work-header h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 3.2vw, 2.7rem);
+      font-weight: 400;
+      color: var(--white);
+      margin-top: 0.75rem;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 0;
+    }
+    .work-item {
+      padding: 2.2rem 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 1.5rem;
+      align-items: baseline;
+      transition: background 0.2s;
+    }
+    .work-item:nth-child(odd)  { padding-right: 3.5rem; }
+    .work-item:nth-child(even) {
+      padding-left: 3.5rem;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .work-num {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      padding-top: 4px;
+    }
+    .work-item p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+    }
+
+    /* ── TEAM ── */
+    #team {
+      background: var(--off-white);
+      padding: 8rem 4rem;
+    }
+    .team-inner { max-width: 1100px; margin: 0 auto; }
+    .team-header { margin-bottom: 4rem; }
+    .team-header h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 3.2vw, 2.7rem);
+      font-weight: 400;
+      color: var(--navy);
+      margin-top: 0.75rem;
+    }
+
+    .team-divider {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 4.5rem 0 0;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid var(--gold-rule);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .team-divider::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .team-member {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 4rem;
+      padding: 3.2rem 0;
+      border-top: 1px solid var(--border);
+      align-items: start;
+    }
+    .team-member:last-of-type { border-bottom: 1px solid var(--border); }
+
+    .member-meta { display: flex; flex-direction: column; }
+
+    .member-avatar {
+      width: 52px;
+      height: 52px;
+      background: var(--navy);
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--gold-light);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.4rem;
+      flex-shrink: 0;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .member-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 0.45rem;
+    }
+    .member-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      line-height: 1.5;
+    }
+
+    .member-bio {
+      font-size: 15.5px;
+      color: var(--text-mid);
+      line-height: 1.88;
+    }
+    .member-bio p { margin-bottom: 0.9rem; }
+    .member-bio p:last-child { margin-bottom: 0; }
+
+    /* Advisory board grid */
+    .advisory-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 0;
+    }
+    .advisory-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      padding: 2.8rem;
+    }
+    .advisory-card .member-bio { font-size: 15px; }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--navy);
+      padding: 8rem 4rem;
+    }
+    .contact-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .contact-left h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+      font-weight: 400;
+      color: var(--white);
+      margin-top: 0.75rem;
+      margin-bottom: 1.6rem;
+      line-height: 1.2;
+    }
+    .contact-left p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.52);
+      line-height: 1.85;
+      margin-bottom: 3rem;
+    }
+
+    .contact-details {}
+    .contact-item {
+      padding: 1.5rem 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 1rem;
+      align-items: center;
+    }
+    .contact-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .contact-item-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .contact-item a,
+    .contact-item span {
+      font-size: 16px;
+      color: rgba(255,255,255,0.78);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-item a:hover { color: var(--gold-light); }
+
+    /* Contact form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .form-field label {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+    }
+    .form-field input,
+    .form-field textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-bottom: 1px solid rgba(255,255,255,0.18);
+      color: var(--white);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 15px;
+      padding: 0.9rem 1rem;
+      outline: none;
+      resize: none;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .form-field input::placeholder,
+    .form-field textarea::placeholder { color: rgba(255,255,255,0.2); }
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--gold);
+      background: rgba(255,255,255,0.06);
+    }
+    .form-field textarea { min-height: 140px; }
+
+    .btn-submit {
+      align-self: flex-start;
+      margin-top: 0.6rem;
+      background: var(--gold);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      padding: 1.05rem 2.6rem;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .btn-submit:hover {
+      background: var(--gold-light);
+      transform: translateX(3px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-deep);
+      padding: 2.8rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-top: 1px solid var(--border-gold);
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-copy {
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.22);
+      letter-spacing: 0.04em;
+    }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 10.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .footer-links a:hover { color: var(--gold-light); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 1rem 1.8rem; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: flex; }
+
+      .hero { padding: 9rem 1.8rem 5rem; }
+      .hero-rule { left: 1.8rem; }
+      .hero-content { padding-left: 1.8rem; }
+
+      .stat-band-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+
+      #about, #global, #digital, #contact { padding: 5.5rem 1.8rem; }
+      #services, #work, #team { padding: 5.5rem 1.8rem; }
+      #digital { padding: 5.5rem 1.8rem; }
+
+      .about-inner,
+      .global-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      .about-left-rule, .global-left-rule { margin-top: 1.5rem; }
+
+      .digital-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .digital-right { order: -1; }
+      .digital-right-rule { margin-top: 1.5rem; }
+
+      .services-header { flex-direction: column; align-items: flex-start; gap: 0; }
+      .services-grid { grid-template-columns: 1fr; gap: 1.5px; }
+      .service-card { padding: 2.8rem 2rem; }
+
+      .work-grid { grid-template-columns: 1fr; }
+      .work-item:nth-child(odd)  { padding-right: 0; }
+      .work-item:nth-child(even) { padding-left: 0; border-left: none; }
+
+      .team-member { grid-template-columns: 1fr; gap: 1.5rem; }
+      .advisory-grid { grid-template-columns: 1fr; }
+
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 1.8rem;
+        gap: 1.4rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero h1 { font-size: 2.7rem; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 0.9rem; }
+      .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+      .stat-band-inner { grid-template-columns: 1fr 1fr; }
+      .contact-item { grid-template-columns: 1fr; gap: 0.2rem; }
+      .pull-quote-band { padding: 4rem 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="#home" class="nav-logo">TRICURO<span class="nav-logo-dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Our Work</a></li>
+      <li><a href="#team">Team</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile menu">
+    <a href="#about"    class="mob-link">About</a>
+    <a href="#services" class="mob-link">Services</a>
+    <a href="#work"     class="mob-link">Our Work</a>
+    <a href="#team"     class="mob-link">Team</a>
+    <a href="#contact"  class="mob-link">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-rule"  aria-hidden="true"></div>
+    <div class="hero-bar"   aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Washington, D.C. &nbsp;&middot;&nbsp; Strategic Communications</p>
+      <h1>The World is<br><em>Listening.</em></h1>
+      <div class="hero-divider" aria-hidden="true"></div>
+      <p class="hero-intro">
+        In the fast-paced, always-on world of the 21st century digital age, healthy global reputations require more than influence; they need control.
+      </p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">Our Services &thinsp;&rarr;</a>
+        <a href="#contact"  class="btn-ghost">Get in Touch</a>
+      </div>
+      <p class="hero-meta">Washington, D.C. &nbsp;&middot;&nbsp; Public Diplomacy &nbsp;&middot;&nbsp; Public Affairs &nbsp;&middot;&nbsp; Global Reputation</p>
+    </div>
+  </section>
+
+  <!-- STAT BAND -->
+  <div class="stat-band" aria-label="Key facts">
+    <div class="stat-band-inner">
+      <div class="stat-item reveal delay-1">
+        <span class="stat-number">4</span>
+        <span class="stat-label">Continents Served</span>
+      </div>
+      <div class="stat-item reveal delay-2">
+        <span class="stat-number">20+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat-item reveal delay-3">
+        <span class="stat-number">3</span>
+        <span class="stat-label">Core Practices</span>
+      </div>
+      <div class="stat-item reveal delay-4">
+        <span class="stat-number">D.C.</span>
+        <span class="stat-label">Headquartered</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-inner">
+      <div class="about-left reveal reveal-left">
+        <div class="section-label">About Tricuro</div>
+        <h2>Global Reputation.<br><em>Precisely Managed.</em></h2>
+        <div class="about-left-rule" aria-hidden="true"></div>
+      </div>
+      <div class="about-right reveal delay-2">
+        <p>
+          In the fast-paced, always-on world of the 21st century digital age, healthy global reputations require more than influence; they need control.
+        </p>
+        <p>
+          Tricuro is a Washington, D.C.-based strategic communications firm specializing in public diplomacy, public affairs, and international reputation management. We serve governments, corporations, and institutions seeking to shape and protect their narratives in an increasingly complex media environment.
+        </p>
+        <p>
+          Our team brings decades of experience at the intersection of policy, media, and international affairs — giving our clients the strategic command they need to communicate with confidence on the world stage.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote-band">
+    <div class="pull-quote-inner reveal">
+      <span class="pull-quote-mark" aria-hidden="true">&ldquo;</span>
+      <p class="pull-quote-text">
+        Healthy global reputations require more than influence; they need control.
+      </p>
+      <p class="pull-quote-attr">Tricuro</p>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-inner">
+      <div class="services-header reveal">
+        <div>
+          <div class="section-label section-label-light">What We Do</div>
+          <h2>Our Services</h2>
+        </div>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card reveal delay-1">
+          <span class="service-num">01</span>
+          <h3>Public Diplomacy</h3>
+          <p>We help nations and international organizations communicate their positions, values, and objectives to foreign publics and policy communities. Our public diplomacy programs build lasting credibility across borders, bridging cultural and political divides through strategic narrative and engagement.</p>
+        </div>
+
+        <div class="service-card reveal delay-2">
+          <span class="service-num">02</span>
+          <h3>Public Affairs</h3>
+          <p>Navigating the intersection of government, policy, and public opinion requires experience and relationships. Tricuro helps clients advance their legislative and regulatory objectives by developing compelling communications strategies tailored to decision-makers and the stakeholders who influence them.</p>
+        </div>
+
+        <div class="service-card reveal delay-3">
+          <span class="service-num">03</span>
+          <h3>Public Relations</h3>
+          <p>Reputation is your most valuable asset. We craft and protect the stories that define how the world sees you — through media relations, crisis communications, executive positioning, and sustained earned-media campaigns that reinforce your credibility and authority over time.</p>
+        </div>
+
+        <div class="service-card reveal delay-4">
+          <span class="service-num">04</span>
+          <h3>Social Media</h3>
+          <p>The digital conversation never stops. Our social media practice helps clients build authoritative presences, engage strategically with key audiences, and respond swiftly and effectively when narratives shift. From content strategy to real-time monitoring, we keep you in control of your digital voice.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GLOBAL PERSPECTIVES -->
+  <section id="global">
+    <div class="global-inner">
+      <div class="global-left reveal reveal-left">
+        <div class="section-label">Perspective</div>
+        <h2>Global Perspectives</h2>
+        <div class="global-left-rule" aria-hidden="true"></div>
+      </div>
+      <div class="global-right reveal delay-2">
+        <p>
+          The world has never been more connected — or more contentious. A single story, statement, or social post can cross time zones in seconds, reshaping how governments, investors, and publics perceive your organization.
+        </p>
+        <p>
+          At Tricuro, we understand that effective communications in the modern era demands a global perspective informed by local knowledge. Our team has operated across North America, Europe, the Middle East, and Africa, giving us the cultural fluency and regional expertise to advise clients on how their messages land — and how they can be optimized — in any arena.
+        </p>
+        <p>
+          We help clients move beyond reactive communications to proactive, strategically coherent engagement that builds trust over time and positions them as credible, authoritative voices in the global conversation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIGITAL CONTROL -->
+  <section id="digital">
+    <div class="digital-inner">
+      <div class="digital-left reveal delay-2">
+        <p>
+          Controlling your digital narrative is no longer optional — it is foundational to organizational success in the modern world.
+        </p>
+        <p>
+          Tricuro's integrated digital practice combines sophisticated monitoring, rapid response capabilities, and long-range content strategy to ensure our clients maintain authority over their stories online. We work with communications teams to develop the protocols, messaging frameworks, and platform-specific strategies needed to respond decisively when reputational threats emerge.
+        </p>
+        <p>
+          Whether managing a breaking crisis or building sustained visibility over months and years, our approach is the same: disciplined, data-informed, and anchored in a deep understanding of how modern media ecosystems actually work.
+        </p>
+      </div>
+      <div class="digital-right reveal reveal-left">
+        <div class="section-label">Digital Strategy</div>
+        <h2>Digital Control</h2>
+        <div class="digital-right-rule" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR WORK -->
+  <section id="work">
+    <div class="work-inner">
+      <div class="work-header reveal">
+        <div class="section-label section-label-light">Experience</div>
+        <h2>Our Work</h2>
+      </div>
+      <div class="work-grid">
+        <div class="work-item reveal delay-1">
+          <span class="work-num">01</span>
+          <p>Developed and executed public diplomacy communications strategies for sovereign governments seeking to strengthen bilateral relations with the United States.</p>
+        </div>
+        <div class="work-item reveal delay-2">
+          <span class="work-num">02</span>
+          <p>Managed high-stakes crisis communications for Fortune 500 companies navigating regulatory investigations and media scrutiny.</p>
+        </div>
+        <div class="work-item reveal delay-1">
+          <span class="work-num">03</span>
+          <p>Advised international organizations on stakeholder engagement strategies for major multilateral negotiations and summits.</p>
+        </div>
+        <div class="work-item reveal delay-2">
+          <span class="work-num">04</span>
+          <p>Designed and implemented sustained public affairs campaigns that shaped legislative outcomes on Capitol Hill.</p>
+        </div>
+        <div class="work-item reveal delay-1">
+          <span class="work-num">05</span>
+          <p>Established social media command centers for governments and institutions requiring real-time narrative monitoring and response.</p>
+        </div>
+        <div class="work-item reveal delay-2">
+          <span class="work-num">06</span>
+          <p>Positioned senior executives and heads of state for international media, including broadcast interviews, op-ed placement, and speaking programs.</p>
+        </div>
+        <div class="work-item reveal delay-1">
+          <span class="work-num">07</span>
+          <p>Produced editorial and multimedia content for embassies, diplomatic missions, and international trade bodies operating in Washington.</p>
+        </div>
+        <div class="work-item reveal delay-2">
+          <span class="work-num">08</span>
+          <p>Built and executed reputation restoration programs for clients emerging from periods of intense public and media scrutiny.</p>
+        </div>
+        <div class="work-item reveal delay-1">
+          <span class="work-num">09</span>
+          <p>Coordinated press and public affairs operations in support of humanitarian and development initiatives across multiple continents.</p>
+        </div>
+        <div class="work-item reveal delay-2">
+          <span class="work-num">10</span>
+          <p>Guided multinational corporations through the communications dimensions of mergers, acquisitions, and market-entry strategies.</p>
+        </div>
+        <div class="work-item reveal delay-1">
+          <span class="work-num">11</span>
+          <p>Provided strategic communications counsel to advocacy organizations pursuing policy change at the federal, state, and international levels.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <div class="team-inner">
+      <div class="team-header reveal">
+        <div class="section-label">Leadership</div>
+        <h2>Our Team</h2>
+      </div>
+
+      <!-- PRINCIPALS -->
+      <p class="team-divider">Principals</p>
+
+      <div class="team-member reveal">
+        <div class="member-meta">
+          <div class="member-avatar" aria-hidden="true">DS</div>
+          <div class="member-name">David Sowells</div>
+          <div class="member-title">Founder &amp; Managing Director</div>
+        </div>
+        <div class="member-bio">
+          <p>David Sowells is the founder and managing director of Tricuro. A seasoned communications strategist with deep experience at the nexus of international affairs and media, David has counseled governments, multinational corporations, and advocacy organizations across four continents.</p>
+          <p>Prior to founding Tricuro, David held senior communications roles in Washington, D.C., working on high-profile public diplomacy, public affairs, and reputation management engagements. He brings a rigorous, outcomes-focused approach to every client relationship, with particular expertise in building and protecting global reputations under pressure.</p>
+          <p>David is a graduate of Howard University and has completed advanced studies in international communications and policy. He is a frequent speaker on the intersection of media, diplomacy, and reputation management.</p>
+        </div>
+      </div>
+
+      <div class="team-member reveal">
+        <div class="member-meta">
+          <div class="member-avatar" aria-hidden="true">CC</div>
+          <div class="member-name">Chuck Conconi</div>
+          <div class="member-title">Senior Advisor, Media &amp; Government Relations</div>
+        </div>
+        <div class="member-bio">
+          <p>Chuck Conconi is one of Washington's most respected journalists and political observers, with a career spanning decades at the heart of the capital's media and political establishment. For many years he wrote the celebrated Personalities column for The Washington Post, covering the intersection of power, politics, and culture in the nation's capital.</p>
+          <p>A veteran of Washington journalism with unparalleled access and institutional knowledge, Chuck advises Tricuro's clients on media strategy, political communications, and the dynamics of Washington's ever-shifting landscape. His insight into how stories are made — and how they can be shaped — is an irreplaceable asset for clients seeking to navigate the nation's capital with credibility and confidence.</p>
+        </div>
+      </div>
+
+      <div class="team-member reveal">
+        <div class="member-meta">
+          <div class="member-avatar" aria-hidden="true">CA</div>
+          <div class="member-name">Charles Andreae</div>
+          <div class="member-title">Senior Advisor, International Affairs</div>
+        </div>
+        <div class="member-bio">
+          <p>Charles Andreae brings more than three decades of experience in international affairs, public diplomacy, and government relations to the Tricuro team. A veteran of multiple high-level diplomatic and governmental assignments, Charles has worked extensively across Europe, the Middle East, and Africa, developing expertise in the complex communications challenges that arise at the intersection of sovereign interests and international public opinion.</p>
+          <p>His counsel is particularly valued by governments and international organizations navigating sensitive bilateral relationships and multilateral processes. Charles combines an astute understanding of geopolitical dynamics with practical expertise in how communications strategy can serve diplomatic objectives.</p>
+        </div>
+      </div>
+
+      <!-- ASSOCIATES -->
+      <p class="team-divider">Associates</p>
+
+      <div class="team-member reveal">
+        <div class="member-meta">
+          <div class="member-avatar" aria-hidden="true">JN</div>
+          <div class="member-name">Joey Nichols</div>
+          <div class="member-title">Digital &amp; Social Media Strategy</div>
+        </div>
+        <div class="member-bio">
+          <p>Joey Nichols leads Tricuro's digital and social media practice, bringing a sophisticated understanding of how digital platforms shape public discourse and reputational dynamics for governments and institutions. He specializes in building integrated digital communications programs that align social media strategy with broader public affairs and public diplomacy objectives.</p>
+          <p>Joey has managed digital communications operations for high-profile clients across the political and corporate sectors, with particular expertise in real-time monitoring, rapid response, and platform-specific content strategy. His work bridges the gap between strategic communications goals and the tactical realities of the modern digital information environment.</p>
+        </div>
+      </div>
+
+      <div class="team-member reveal">
+        <div class="member-meta">
+          <div class="member-avatar" aria-hidden="true">SS</div>
+          <div class="member-name">Samantha Sault</div>
+          <div class="member-title">Public Affairs &amp; Policy Communications</div>
+        </div>
+        <div class="member-bio">
+          <p>Samantha Sault is a communications strategist with deep expertise in public affairs and policy advocacy. She has worked extensively with clients navigating the legislative and regulatory environment in Washington, developing communications strategies that effectively advance policy objectives and build coalitions among key stakeholders.</p>
+          <p>Samantha's background spans work with advocacy organizations, trade associations, and corporations engaged in significant federal policy processes. She brings particular skill in translating complex policy issues into clear, compelling public narratives that engage both decision-makers and the broader publics whose views shape the policy environment.</p>
+        </div>
+      </div>
+
+      <div class="team-member reveal">
+        <div class="member-meta">
+          <div class="member-avatar" aria-hidden="true">SC</div>
+          <div class="member-name">Sandra Charles</div>
+          <div class="member-title">International Media &amp; Public Relations</div>
+        </div>
+        <div class="member-bio">
+          <p>Sandra Charles specializes in international media relations and public relations strategy, with experience working across the Americas, Europe, and the Caribbean. She has built and managed media programs for governments, diplomatic missions, and international organizations seeking to engage English-language and international press effectively.</p>
+          <p>Sandra's expertise encompasses executive media preparation, press program development, and the management of complex, multi-market communications campaigns. Her relationships with international journalists and editors — and her understanding of what drives editorial interest in Washington — are a significant asset for Tricuro's international clients.</p>
+        </div>
+      </div>
+
+      <div class="team-member reveal">
+        <div class="member-meta">
+          <div class="member-avatar" aria-hidden="true">AM</div>
+          <div class="member-name">Allen Mgaieth</div>
+          <div class="member-title">Middle East &amp; Africa Practice</div>
+        </div>
+        <div class="member-bio">
+          <p>Allen Mgaieth leads Tricuro's practice focused on the Middle East and Africa, bringing firsthand experience living and working across these regions to his strategic communications work. He advises governments, institutions, and corporations navigating the communications challenges that arise from operating in — or engaging with — these dynamic and often complex environments.</p>
+          <p>Allen's regional expertise encompasses an understanding of local media ecosystems, political dynamics, and the cultural dimensions of effective communications — knowledge that is essential for clients whose reputations and objectives extend beyond Washington to audiences in these regions and the international actors focused on them.</p>
+        </div>
+      </div>
+
+      <!-- ADVISORY BOARD -->
+      <p class="team-divider">Advisory Board</p>
+      <div class="advisory-grid">
+        <div class="advisory-card reveal delay-1">
+          <div class="member-name" style="margin-bottom:0.4rem;">Bill McSweeny</div>
+          <div class="member-title" style="margin-bottom:1.4rem;">Advisory Board</div>
+          <div class="member-bio">
+            <p>Bill McSweeny brings a distinguished record of public service and international engagement to Tricuro's advisory board. A respected figure in Washington's national security and foreign policy community, Bill has held senior positions that have given him unparalleled insight into the intersection of American foreign policy, international organizations, and strategic communications.</p>
+            <p>His counsel informs Tricuro's approach to public diplomacy engagements and our work with clients operating in sensitive geopolitical environments. Bill's network and perspective are an invaluable resource for clients navigating the U.S. policy establishment.</p>
+          </div>
+        </div>
+        <div class="advisory-card reveal delay-2">
+          <div class="member-name" style="margin-bottom:0.4rem;">Col. Charles McFetridge</div>
+          <div class="member-title" style="margin-bottom:1.4rem;">Advisory Board</div>
+          <div class="member-bio">
+            <p>Colonel Charles McFetridge brings a distinguished military career and deep expertise in strategic communications, information operations, and civil-military affairs to Tricuro's advisory board. His experience encompasses senior leadership roles across a range of operational and institutional environments, giving him a unique understanding of how communications strategy operates under conditions of complexity and high stakes.</p>
+            <p>Colonel McFetridge advises Tricuro on defense and national security-related communications engagements, and brings a rigorous, mission-oriented perspective to our work with government and institutional clients.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="contact-left reveal">
+        <div class="section-label section-label-light">Get in Touch</div>
+        <h2>Let's Start a Conversation</h2>
+        <p>Whether you are navigating a complex reputational challenge or building a long-term strategic communications program, we would welcome the opportunity to discuss how Tricuro can help.</p>
+
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-item-label">Email</div>
+            <a href="mailto:info@tricuro.com">info@tricuro.com</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-label">Phone</div>
+            <a href="tel:+12027019005">+1-202-701-9005</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-label">Location</div>
+            <span>Washington, D.C.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal delay-2">
+        <form class="contact-form" onsubmit="handleSubmit(event)" novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="fname" placeholder="Jane" required autocomplete="given-name" />
+            </div>
+            <div class="form-field">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lname" placeholder="Smith" required autocomplete="family-name" />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="jane@organization.com" required autocomplete="email" />
+          </div>
+          <div class="form-field">
+            <label for="org">Organization</label>
+            <input type="text" id="org" name="org" placeholder="Your organization" autocomplete="organization" />
+          </div>
+          <div class="form-field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us about your communications needs&hellip;" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Message &thinsp;&rarr;</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#home" class="footer-logo">TRICURO<span>.</span></a>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Our Work</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2025 Tricuro. Washington, D.C. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // ── NAV SCROLL STATE ──
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ── MOBILE MENU ──
+    const toggle = document.getElementById('nav-toggle');
+    const menu   = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => {
+      const open = toggle.classList.toggle('open');
+      menu.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open);
+    });
+    document.querySelectorAll('.mob-link').forEach(link => {
+      link.addEventListener('click', () => {
+        toggle.classList.remove('open');
+        menu.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // ── SCROLL REVEAL ──
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left');
+    const observer  = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+
+    // ── CONTACT FORM ──
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.btn-submit');
+      btn.textContent = 'Message Sent';
+      btn.style.background = '#2d6a4f';
+      btn.disabled = true;
+    }
+  </script>
+
+</body>
+</html>
