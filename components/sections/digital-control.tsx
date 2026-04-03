@@ -2,7 +2,7 @@ import { Reveal } from "@/components/reveal"
 
 export function DigitalControl() {
   return (
-    <section id="digital" className="bg-warm-grey py-24 px-8 md:px-16">
+    <section id="digital" className="bg-warm-grey py-16 px-8 md:px-16">
       <div className="max-w-[1100px] mx-auto grid md:grid-cols-[1fr_320px] gap-16 md:gap-28 items-start">
 
         {/* Left — body */}
@@ -25,7 +25,7 @@ export function DigitalControl() {
           </p>
         </Reveal>
 
-        {/* Right — heading (reversed on mobile) */}
+        {/* Right — heading + signal graphic */}
         <Reveal direction="left" className="md:order-none order-first">
           <p className="flex items-center gap-3 text-[10px] font-semibold tracking-[0.32em] uppercase text-gold mb-4">
             <span className="block w-6 h-px bg-gold" />
@@ -34,7 +34,43 @@ export function DigitalControl() {
           <h2 className="font-serif text-[clamp(2rem,3.2vw,2.7rem)] font-normal text-navy leading-[1.28]">
             Digital Control
           </h2>
-          <div className="w-10 h-0.5 bg-gold mt-8" />
+          <div className="w-10 h-0.5 bg-gold mt-8 mb-10" />
+
+          {/* Signal broadcast / network graphic */}
+          <svg
+            viewBox="0 0 200 180"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-[160px] h-[144px] opacity-60"
+            aria-hidden
+          >
+            {/* Central node */}
+            <circle cx="100" cy="90" r="5" fill="#b8902a" />
+            {/* Inner ring */}
+            <circle cx="100" cy="90" r="28" stroke="#b8902a" strokeWidth="1" opacity="0.7" />
+            {/* Mid ring */}
+            <circle cx="100" cy="90" r="55" stroke="#b8902a" strokeWidth="0.8" opacity="0.45" strokeDasharray="4 5" />
+            {/* Outer ring */}
+            <circle cx="100" cy="90" r="82" stroke="#b8902a" strokeWidth="0.7" opacity="0.22" strokeDasharray="3 6" />
+            {/* Network nodes */}
+            <circle cx="100" cy="62" r="3"  fill="#b8902a" opacity="0.7" />
+            <circle cx="124" cy="104" r="3" fill="#b8902a" opacity="0.7" />
+            <circle cx="76"  cy="104" r="3" fill="#b8902a" opacity="0.7" />
+            {/* Connector lines */}
+            <line x1="100" y1="90" x2="100" y2="62"  stroke="#b8902a" strokeWidth="0.8" opacity="0.5" />
+            <line x1="100" y1="90" x2="124" y2="104" stroke="#b8902a" strokeWidth="0.8" opacity="0.5" />
+            <line x1="100" y1="90" x2="76"  y2="104" stroke="#b8902a" strokeWidth="0.8" opacity="0.5" />
+            {/* Outer satellite nodes */}
+            <circle cx="58"  cy="42"  r="2.5" fill="#b8902a" opacity="0.45" />
+            <circle cx="152" cy="55"  r="2.5" fill="#b8902a" opacity="0.45" />
+            <circle cx="160" cy="130" r="2.5" fill="#b8902a" opacity="0.45" />
+            <circle cx="40"  cy="130" r="2.5" fill="#b8902a" opacity="0.45" />
+            {/* Lines to outer nodes */}
+            <line x1="100" y1="62"  x2="58"  y2="42"  stroke="#b8902a" strokeWidth="0.6" opacity="0.3" strokeDasharray="3 4" />
+            <line x1="124" y1="104" x2="152" y2="55"  stroke="#b8902a" strokeWidth="0.6" opacity="0.3" strokeDasharray="3 4" />
+            <line x1="124" y1="104" x2="160" y2="130" stroke="#b8902a" strokeWidth="0.6" opacity="0.3" strokeDasharray="3 4" />
+            <line x1="76"  y1="104" x2="40"  y2="130" stroke="#b8902a" strokeWidth="0.6" opacity="0.3" strokeDasharray="3 4" />
+          </svg>
         </Reveal>
       </div>
     </section>

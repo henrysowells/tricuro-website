@@ -1,17 +1,13 @@
 import { Reveal } from "@/components/reveal"
 
 const items = [
-  "Advised Ericsson (Sweden) on crisis communications during a high-stakes international regulatory investigation, protecting brand reputation across global markets.",
-  "Led international media relations for the Kingdom of Saudi Arabia, managing sustained narratives across U.S., European, and Asian press markets.",
-  "Served as Public Affairs Europe Director at CNN International and Time Warner, shaping communications strategy at the highest levels of global media.",
-  "Advised HSBC and McDonald's on political engagement strategy, navigating complex regulatory and reputational environments across multiple jurisdictions.",
-  "Developed strategic messaging and media programs for the Governments of Bahrain, Mexico, and Sri Lanka, building credibility with international press.",
-  "Provided crisis communications counsel to Trafigura (Switzerland), one of the world's largest commodity trading companies, during periods of intense media scrutiny.",
-  "Built reputation programs for African Parks, Wildlife Alliance, and Vital Voices Global Partnership — elevating mission-driven organizations on the world stage.",
-  "Counseled Sandals Resorts on international public relations, driving editorial coverage across luxury travel and lifestyle media.",
-  "Provided strategic communications support to the Council for the Development of Cambodia, shaping the country's narrative for international investors and diplomatic audiences.",
-  "Advised Inmarsat (UK) on public affairs communications, positioning the company in key policy debates affecting the global satellite industry.",
-  "Speechwriting and media preparation for heads of state, senior government ministers, and Fortune 500 C-suite executives across Asia, the Middle East, Europe, and the Americas.",
+  "Council for the Development of Cambodia — international media strategy and investment promotion.",
+  "Kingdom of Saudi Arabia — international media relations.",
+  "Ericsson — crisis communications during DOJ and SEC investigations.",
+  "Trafigura — media relations, congressional and public affairs campaign.",
+  "Government of Bahrain — online reputation management.",
+  "Government of Mexico — media training for G20 spokesman.",
+  "Greif (Fortune 500) — 24/7 crisis communications support.",
 ]
 
 export function OurWork() {
