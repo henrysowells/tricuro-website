@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Reveal } from "@/components/reveal"
+import { ContactShaderBg } from "@/components/ui/contact-shader-bg"
 
 export function Contact() {
   const [sent, setSent] = useState(false)
@@ -12,8 +13,13 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="bg-navy py-24 px-8 md:px-16">
-      <div className="max-w-[1100px] mx-auto grid md:grid-cols-[1.15fr_1fr] gap-16 md:gap-24 items-start">
+    <section id="contact" className="relative bg-navy py-24 px-8 md:px-16 overflow-hidden">
+      {/* Ambient WebGL shader background — very subtle depth effect */}
+      <div className="absolute inset-0 opacity-[0.12] pointer-events-none" aria-hidden>
+        <ContactShaderBg />
+      </div>
+
+      <div className="relative z-10 max-w-[1100px] mx-auto grid md:grid-cols-[1.15fr_1fr] gap-16 md:gap-24 items-start">
 
         {/* Left */}
         <Reveal>
