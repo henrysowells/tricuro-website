@@ -60,6 +60,10 @@ export function Clients() {
                 </div>
               </div>
             ))}
+            {/* Fill last row so no gap-background shows through */}
+            {Array.from({ length: (3 - (clients.length % 3)) % 3 }).map((_, i) => (
+              <div key={`filler-${i}`} aria-hidden className="bg-off-white px-8 py-7" />
+            ))}
           </div>
         </Reveal>
       </div>
