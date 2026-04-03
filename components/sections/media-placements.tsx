@@ -42,13 +42,13 @@ export function MediaPlacements() {
         </Reveal>
 
         <Reveal delay={2}>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-px bg-white/[0.05]">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7">
             {outlets.map((outlet) => (
               <div
                 key={outlet}
-                className="bg-navy-deep hover:bg-white/[0.04] transition-colors duration-300 flex items-center justify-center px-4 py-6 text-center group"
+                className="border border-white/[0.08] -mt-px -ml-px flex items-center justify-center px-4 py-7 text-center group hover:border-gold/40 hover:bg-white/[0.03] transition-all duration-300 cursor-default"
               >
-                <span className="text-[11px] font-bold tracking-[0.12em] uppercase text-white/35 group-hover:text-gold-light transition-colors duration-300 leading-tight">
+                <span className="text-[11px] font-bold tracking-[0.12em] uppercase text-white/30 group-hover:text-gold-light transition-colors duration-300 leading-tight">
                   {outlet}
                 </span>
               </div>

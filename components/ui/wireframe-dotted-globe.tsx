@@ -21,9 +21,9 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
     const context = canvas.getContext("2d")
     if (!context) return
 
-    // Set up responsive dimensions
-    const containerWidth = Math.min(width, window.innerWidth - 40)
-    const containerHeight = Math.min(height, window.innerHeight - 100)
+    // Fixed dimensions — no responsive shrinking
+    const containerWidth = width
+    const containerHeight = height
     const radius = Math.min(containerWidth, containerHeight) / 2.5
 
     const dpr = window.devicePixelRatio || 1
@@ -276,8 +276,7 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
       )}
       <canvas
         ref={canvasRef}
-        className="w-full h-auto"
-        style={{ maxWidth: "100%", height: "auto", background: "transparent" }}
+        style={{ width: `${width}px`, height: `${height}px`, background: "transparent", display: "block" }}
       />
       <div className="absolute bottom-4 left-4 text-xs text-white/30 px-2 py-1">
         Drag to rotate &bull; Scroll to zoom

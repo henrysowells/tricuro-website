@@ -1,17 +1,17 @@
 import { Reveal } from "@/components/reveal"
 
 const items = [
-  "Developed and executed public diplomacy communications strategies for sovereign governments seeking to strengthen bilateral relations with the United States.",
-  "Managed high-stakes crisis communications for Fortune 500 companies navigating regulatory investigations and media scrutiny.",
-  "Advised international organizations on stakeholder engagement strategies for major multilateral negotiations and summits.",
-  "Designed and implemented sustained public affairs campaigns that shaped legislative outcomes on Capitol Hill.",
-  "Established social media command centers for governments and institutions requiring real-time narrative monitoring and response.",
-  "Positioned senior executives and heads of state for international media, including broadcast interviews, op-ed placement, and speaking programs.",
-  "Produced editorial and multimedia content for embassies, diplomatic missions, and international trade bodies operating in Washington.",
-  "Built and executed reputation restoration programs for clients emerging from periods of intense public and media scrutiny.",
-  "Coordinated press and public affairs operations in support of humanitarian and development initiatives across multiple continents.",
-  "Guided multinational corporations through the communications dimensions of mergers, acquisitions, and market-entry strategies.",
-  "Provided strategic communications counsel to advocacy organizations pursuing policy change at the federal, state, and international levels.",
+  "Advised Ericsson (Sweden) on crisis communications during a high-stakes international regulatory investigation, protecting brand reputation across global markets.",
+  "Led international media relations for the Kingdom of Saudi Arabia, managing sustained narratives across U.S., European, and Asian press markets.",
+  "Served as Public Affairs Europe Director at CNN International and Time Warner, shaping communications strategy at the highest levels of global media.",
+  "Advised HSBC and McDonald's on political engagement strategy, navigating complex regulatory and reputational environments across multiple jurisdictions.",
+  "Developed strategic messaging and media programs for the Governments of Bahrain, Mexico, and Sri Lanka, building credibility with international press.",
+  "Provided crisis communications counsel to Trafigura (Switzerland), one of the world's largest commodity trading companies, during periods of intense media scrutiny.",
+  "Built reputation programs for African Parks, Wildlife Alliance, and Vital Voices Global Partnership — elevating mission-driven organizations on the world stage.",
+  "Counseled Sandals Resorts on international public relations, driving editorial coverage across luxury travel and lifestyle media.",
+  "Provided strategic communications support to the Council for the Development of Cambodia, shaping the country's narrative for international investors and diplomatic audiences.",
+  "Advised Inmarsat (UK) on public affairs communications, positioning the company in key policy debates affecting the global satellite industry.",
+  "Speechwriting and media preparation for heads of state, senior government ministers, and Fortune 500 C-suite executives across Asia, the Middle East, Europe, and the Americas.",
 ]
 
 export function OurWork() {

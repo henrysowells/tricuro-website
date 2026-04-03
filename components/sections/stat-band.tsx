@@ -1,10 +1,10 @@
 import { Reveal } from "@/components/reveal"
 
 const stats = [
-  { number: "4",   label: "Continents Served" },
-  { number: "20+", label: "Years Experience" },
-  { number: "3",   label: "Core Practices" },
-  { number: "D.C.", label: "Headquartered" },
+  { number: "6",   label: "Continents" },
+  { number: "25+", label: "Clients" },
+  { number: "40+", label: "Media Placements" },
+  { number: "3",   label: "Offices" },
 ]
 
 export function StatBand() {

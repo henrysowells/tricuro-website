@@ -50,7 +50,7 @@ export function Hero() {
           </div>
 
           <h1 className="font-serif text-[clamp(3rem,7vw,6.5rem)] font-normal leading-[1.04] tracking-[-0.015em] text-white animate-[heroUp_0.9s_0.7s_ease_forwards] opacity-0">
-            The World is
+            <span className="whitespace-nowrap">The World is</span>
             <br />
             <em className="italic text-gold-light">Listening.</em>
           </h1>
@@ -82,9 +82,9 @@ export function Hero() {
           </p>
         </div>
 
-        {/* Globe column */}
-        <div className="lg:w-[520px] xl:w-[600px] flex-shrink-0 animate-[heroUp_0.9s_0.6s_ease_forwards] opacity-0">
-          <RotatingEarth width={600} height={520} className="w-full" />
+        {/* Globe column — fixed 500×500, never resizes */}
+        <div className="flex-shrink-0 flex items-center justify-center animate-[heroUp_0.9s_0.6s_ease_forwards] opacity-0">
+          <RotatingEarth width={500} height={500} />
         </div>
       </div>
 

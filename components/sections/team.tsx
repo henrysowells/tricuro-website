@@ -2,13 +2,11 @@ import { Reveal } from "@/components/reveal"
 
 const team = [
   {
-    initials: "DS",
     name: "David Sowells",
     title: "Principal",
     bio: "Began his career as a political economist, campaign strategist and speechwriter at the UK House of Commons. Advised governments, corporations, NGOs and HNWIs including HSBC and McDonald's on political engagement, numerous governments on media relations, and Ericsson on crisis communications. Previously served as Public Affairs Europe Director at CNN International and Time Warner. Studied at the London School of Economics and Harvard Business School. Led communications consultancies in Washington DC, London and Brussels.",
   },
   {
-    initials: "NH",
     name: "Nicolla Hewitt",
     title: "Principal",
     bio: "30+ years experience in U.S. and international media including ABC, CBS, NBC and Yahoo. Adviser to HM King Charles III for the Turquoise Mountain Foundation. Advises Sir Richard Branson and Virgin Unite. Board member of the Foreign Press Correspondents of the United States and the International Women's Media Foundation. Degree in Broadcast Journalism from Pepperdine University. Media Fellow at the Hoover Institution at Stanford. Speaks English, French and Arabic.",
@@ -35,8 +33,13 @@ export function Team() {
             <Reveal key={member.name}>
               <div className="grid md:grid-cols-[260px_1fr] gap-8 md:gap-16 py-12 items-start">
                 <div>
-                  <div className="w-12 h-12 bg-navy flex items-center justify-center font-serif text-base font-medium text-gold-light border-b-2 border-gold mb-5">
-                    {member.initials}
+                  {/* Elegant portrait silhouette */}
+                  <div className="w-[72px] h-[72px] mb-5 relative">
+                    <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                      <rect x="0.75" y="0.75" width="70.5" height="70.5" stroke="#b8902a" strokeWidth="1.5" />
+                      <circle cx="36" cy="26" r="11" stroke="#b8902a" strokeWidth="1.2" />
+                      <path d="M8 68 Q8 50 36 47 Q64 50 64 68" stroke="#b8902a" strokeWidth="1.2" />
+                    </svg>
                   </div>
                   <p className="font-serif text-[1.25rem] font-medium text-navy leading-tight mb-1.5">
                     {member.name}

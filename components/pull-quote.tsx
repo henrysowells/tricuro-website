@@ -3,7 +3,7 @@ import { Reveal } from "@/components/reveal"
 export function PullQuote() {
   return (
     <div
-      className="relative py-20 px-8 md:px-16 overflow-hidden"
+      className="relative py-12 px-8 md:px-16 overflow-hidden"
       style={{ background: "#0d2340" }}
     >
       <div
