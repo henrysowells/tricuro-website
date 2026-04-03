@@ -3,7 +3,7 @@ import { Reveal } from "@/components/reveal"
 export function PullQuote() {
   return (
     <div
-      className="relative py-5 px-8 md:px-16 overflow-hidden"
+      className="relative py-3 px-8 md:px-16 overflow-hidden"
       style={{ background: "#0d2340" }}
     >
       <div
@@ -18,11 +18,11 @@ export function PullQuote() {
         <div className="relative z-10 max-w-[900px] mx-auto text-center">
           <span
             aria-hidden
-            className="block font-serif text-[5rem] leading-[0.5] text-gold/60 mb-3"
+            className="block font-serif text-[5rem] leading-[0.5] text-gold/60 mb-2"
           >
             &ldquo;
           </span>
-          <p className="font-serif text-[clamp(1.3rem,2.6vw,1.9rem)] italic font-normal text-white leading-[1.55] mb-4">
+          <p className="font-serif text-[clamp(1.3rem,2.6vw,1.9rem)] italic font-normal text-white leading-[1.55] mb-3">
             Healthy global reputations require more than influence; they need control.
           </p>
           <p className="flex items-center justify-center gap-4 text-[10.5px] font-semibold tracking-[0.26em] uppercase text-gold-light">
