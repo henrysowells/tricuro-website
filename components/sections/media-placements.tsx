@@ -46,7 +46,7 @@ export function MediaPlacements() {
             {outlets.map((outlet) => (
               <div
                 key={outlet}
-                className="border border-white/[0.08] -mt-px -ml-px flex items-center justify-center px-4 py-7 text-center group hover:border-gold/40 hover:bg-white/[0.03] transition-all duration-300 cursor-default"
+                className="bg-navy-deep border border-white/[0.08] -mt-px -ml-px flex items-center justify-center px-4 py-7 text-center group hover:border-gold/40 hover:bg-white/[0.04] transition-all duration-300 cursor-default"
               >
                 <span className="text-[11px] font-bold tracking-[0.12em] uppercase text-white/30 group-hover:text-gold-light transition-colors duration-300 leading-tight">
                   {outlet}

@@ -1,13 +1,14 @@
 import { Reveal } from "@/components/reveal"
 
 const items = [
-  "Council for the Development of Cambodia — international media strategy and investment promotion.",
-  "Kingdom of Saudi Arabia — international media relations.",
-  "Ericsson — crisis communications during DOJ and SEC investigations.",
-  "Trafigura — media relations, congressional and public affairs campaign.",
-  "Government of Bahrain — online reputation management.",
-  "Government of Mexico — media training for G20 spokesman.",
-  "Greif (Fortune 500) — 24/7 crisis communications support.",
+  "Council for the Development of Cambodia — international media strategy and investment promotion",
+  "Kingdom of Saudi Arabia — international media relations",
+  "Ericsson (Sweden) — crisis communications during DOJ and SEC investigations",
+  "Trafigura (Switzerland) — media relations, congressional and public affairs campaign",
+  "Government of Bahrain — online reputation management and strategic messaging",
+  "Government of Mexico — media training for G20 and B20 summits",
+  "Greif Fortune 500 — 24/7 crisis communications support amid labor challenges",
+  "African Parks — media placement and opinion article drafting for global conservation",
 ]
 
 export function OurWork() {

@@ -2,8 +2,20 @@ import { Reveal } from "@/components/reveal"
 
 export function DigitalControl() {
   return (
-    <section id="digital" className="bg-warm-grey py-16 px-8 md:px-16">
-      <div className="max-w-[1100px] mx-auto grid md:grid-cols-[1fr_320px] gap-16 md:gap-28 items-start">
+    <section id="digital" className="relative overflow-hidden bg-warm-grey py-16 px-8 md:px-16">
+      {/* Paper texture overlay */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: [
+            "repeating-linear-gradient(0deg, transparent, transparent 18px, rgba(0,0,0,0.02) 18px, rgba(0,0,0,0.02) 19px)",
+            "repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(0,0,0,0.015) 24px, rgba(0,0,0,0.015) 25px)",
+            "repeating-linear-gradient(-52deg, transparent, transparent 40px, rgba(0,0,0,0.012) 40px, rgba(0,0,0,0.012) 41px)",
+          ].join(", "),
+        }}
+      />
+      <div className="relative z-10 max-w-[1100px] mx-auto grid md:grid-cols-[1fr_320px] gap-16 md:gap-28 items-start">
 
         {/* Left — body */}
         <Reveal delay={2}>

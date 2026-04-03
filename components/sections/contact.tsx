@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import { Reveal } from "@/components/reveal"
-import { ContactShaderBg } from "@/components/ui/contact-shader-bg"
 
 export function Contact() {
   const [sent, setSent] = useState(false)
@@ -14,10 +13,18 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative bg-navy py-24 px-8 md:px-16 overflow-hidden">
-      {/* Ambient WebGL shader background — very subtle depth effect */}
-      <div className="absolute inset-0 opacity-[0.12] pointer-events-none" aria-hidden>
-        <ContactShaderBg />
-      </div>
+      {/* Static paper texture overlay */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: [
+            "repeating-linear-gradient(0deg, transparent, transparent 18px, rgba(255,255,255,0.025) 18px, rgba(255,255,255,0.025) 19px)",
+            "repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(255,255,255,0.018) 24px, rgba(255,255,255,0.018) 25px)",
+            "repeating-linear-gradient(-52deg, transparent, transparent 40px, rgba(255,255,255,0.012) 40px, rgba(255,255,255,0.012) 41px)",
+          ].join(", "),
+        }}
+      />
 
       <div className="relative z-10 max-w-[1100px] mx-auto grid md:grid-cols-[1.15fr_1fr] gap-16 md:gap-24 items-start">
 
